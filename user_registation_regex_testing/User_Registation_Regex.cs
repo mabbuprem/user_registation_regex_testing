@@ -166,5 +166,159 @@ namespace UserRegistrationRegex
             }
         }
         #endregion
+
+        #region Using Func function, Password Validation
+
+        public Func<string, string> ValidatingPasswordFunc = password =>
+        {
+            try
+            {
+                if (password == null)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.NULL_DATA, "The passwords value could not be null");
+                }
+                bool result = Regex.IsMatch(password, passwordFormat);
+                if (password == string.Empty)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.EMPTY_DATA, "The password value could not be empty");
+                }
+                if (result)
+                {
+                    return $"{password} is valid".ToUpper();
+                }
+                else
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.INVALID_DATA, $"{password} is invalid".ToUpper());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        };
+        #endregion
+
+        #region Using Func function, Mobile Number Validation
+
+        public Func<string, string> ValidatingMobileNumberFunc = phoneNo =>
+        {
+            try
+            {
+                if (phoneNo == null)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.NULL_DATA, "The phone number value could not be null");
+                }
+                bool result = Regex.IsMatch(phoneNo, mobileNoFormat);
+                if (phoneNo == string.Empty)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.EMPTY_DATA, "The phone number value could not be empty");
+                }
+                if (result)
+                {
+                    return $"{phoneNo} is valid".ToUpper();
+                }
+                else
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.INVALID_DATA, $"{phoneNo} is invalid".ToUpper());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        };
+        #endregion
+
+        #region Using Func function, Email Validation
+
+        public Func<string, string> ValidatingEmailFunc = email =>
+        {
+            try
+            {
+                if (email == null)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.NULL_DATA, "The email value could not be null");
+                }
+                bool result = Regex.IsMatch(email, eMailRegex);
+                if (email == string.Empty)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.EMPTY_DATA, "The email value could not be empty");
+                }
+                if (result)
+                {
+                    return $"{email} is valid".ToUpper();
+                }
+                else
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.INVALID_DATA, $"{email} is invalid".ToUpper());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        };
+        #endregion
+
+        #region Using Func function, Last Name Validation
+
+        public Func<string, string> ValidatingLastNameFunc = lN =>
+        {
+            try
+            {
+                if (lN == null)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.NULL_DATA, "The last name value could not be null");
+                }
+                bool result = Regex.IsMatch(lN, lastName);
+                if (lN == string.Empty)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.EMPTY_DATA, "The last name value could not be empty");
+                }
+                if (result)
+                {
+                    return $"{lN} is valid".ToUpper();
+                }
+                else
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.INVALID_DATA, $"{lN} is invalid".ToUpper());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        };
+        #endregion
+
+        #region Using Func Function, First Name Valiidation
+        public Func<string, string> ValidatingFirstNameFunc = fN =>
+        {
+            try
+            {
+                if (fN == null)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.NULL_DATA, "The first name value could not be null");
+                }
+                bool result = Regex.IsMatch(fN, firstName);
+                if (fN == string.Empty)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.EMPTY_DATA, "The first name value could not be empty");
+                }
+                if (result)
+                {
+                    return $"{fN} is valid".ToUpper();
+                }
+                else
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.INVALID_DATA, $"{fN} is invalid".ToUpper());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        };
+        #endregion
     }
 }
