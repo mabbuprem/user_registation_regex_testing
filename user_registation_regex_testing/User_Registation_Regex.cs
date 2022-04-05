@@ -17,31 +17,153 @@ namespace UserRegistrationRegex
         public static string passwordFormat = "^(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z1-9]{1}[a-zA-Z0-9]{7,}";
         #endregion
 
-        #region Patterns Validation by Regex
+        #region Passwords Validation & Exception Handling as well.
         public string ValidatePassword(string password)
         {
-            string result = Regex.IsMatch(password, passwordFormat) ? $"{password} is valid".ToUpper() : $"{password} is Invalid".ToUpper();
-            return result;
+            try
+            {
+                if (password == null)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.NULL_DATA, "The passwords value could not be null");
+                }
+                bool result = Regex.IsMatch(password, passwordFormat);
+                if (password == string.Empty)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.EMPTY_DATA, "The password value could not be empty");
+                }
+                if (result)
+                {
+                    return $"{password} is valid".ToUpper();
+                }
+                else
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.INVALID_DATA, $"{password} is invalid".ToUpper());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
+        #endregion
+
+        #region Mobile Number Validation & Exception Handling as well.
         public string ValidateMobileNo(string phoneNo)
         {
-            string result = Regex.IsMatch(phoneNo, mobileNoFormat) ? $"{phoneNo} is valid".ToUpper() : $"{phoneNo} is Invalid".ToUpper();
-            return result;
+            try
+            {
+                if (phoneNo == null)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.NULL_DATA, "The phone number value could not be null");
+                }
+                bool result = Regex.IsMatch(phoneNo, mobileNoFormat);
+                if (phoneNo == string.Empty)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.EMPTY_DATA, "The phone number value could not be empty");
+                }
+                if (result)
+                {
+                    return $"{phoneNo} is valid".ToUpper();
+                }
+                else
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.INVALID_DATA, $"{phoneNo} is invalid".ToUpper());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
+        #endregion
+
+        #region Email Validation & Exception Handling as well.
         public string ValidateEmail(string email)
         {
-            string result = Regex.IsMatch(email, eMailRegex) ? $"{email} is valid".ToUpper() : $"{email} is Invalid".ToUpper();
-            return result;
+            try
+            {
+                if (email == null)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.NULL_DATA, "The email value could not be null");
+                }
+                bool result = Regex.IsMatch(email, eMailRegex);
+                if (email == string.Empty)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.EMPTY_DATA, "The email value could not be empty");
+                }
+                if (result)
+                {
+                    return $"{email} is valid".ToUpper();
+                }
+                else
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.INVALID_DATA, $"{email} is invalid".ToUpper());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
+        #endregion
+
+        #region Last Name Validation & Exception Handling as well.
         public string ValidatelastName(string lN)
         {
-            string result = Regex.IsMatch(lN, lastName) ? $"{lN} is valid".ToUpper() : $"{lN} is Invalid".ToUpper();
-            return result;
+            try
+            {
+                if (lN == null)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.NULL_DATA, "The last name value could not be null");
+                }
+                bool result = Regex.IsMatch(lN, lastName);
+                if (lN == string.Empty)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.EMPTY_DATA, "The last name value could not be empty");
+                }
+                if (result)
+                {
+                    return $"{lN} is valid".ToUpper();
+                }
+                else
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.INVALID_DATA, $"{lN} is invalid".ToUpper());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
+        #endregion
+
+        #region First Name Validation & Exception Handling as well.
         public string ValidatefirstName(string fN)
         {
-            string result = Regex.IsMatch(fN, firstName) ? $"{fN} is valid".ToUpper() : $"{fN} is Invalid".ToUpper();
-            return result;
+            try
+            {
+                if (fN == null)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.NULL_DATA, "The first name value could not be null");
+                }
+                bool result = Regex.IsMatch(fN, firstName);
+                if (fN == string.Empty)
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.EMPTY_DATA, "The first name value could not be empty");
+                }
+                if (result)
+                {
+                    return $"{fN} is valid".ToUpper();
+                }
+                else
+                {
+                    throw new CustomUserRegistrationException(ExceptionType.INVALID_DATA, $"{fN} is invalid".ToUpper());
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
         #endregion
     }
