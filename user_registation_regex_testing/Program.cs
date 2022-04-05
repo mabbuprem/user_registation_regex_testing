@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Text;
 
 namespace UserRegistrationRegex
 {
     public class Program
     {
-        #region Taking Inputs from Console & Storing them on the list.
         static void Main(string[] args)
         {
             string chooseOptionForEnteringUserDetails = string.Empty;
@@ -16,12 +14,11 @@ namespace UserRegistrationRegex
             do
             {
                 UserDetails userDetails = new UserDetails();
-                userDetails.ContactDetailsTakenFromConsole();
+                userDetails.ContactDetails();
                 usersList.Add(userDetails);
                 Console.WriteLine("Do you want to enter more users details? \n\"Y\" or \"N\"");
                 chooseOptionForEnteringUserDetails = Console.ReadLine();
             } while (chooseOptionForEnteringUserDetails.ToUpper() != "N");
         }
-        #endregion
     }
 }
