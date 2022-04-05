@@ -8,13 +8,16 @@ namespace UserRegistrationRegex
 {
     public class UserDetails
     {
+        #region Fields for User Registration
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string email { get; set; }
         public string phoneNo { get; set; }
         public string password { get; set; }
+        #endregion
 
-        public void ContactDetails()
+        #region Contact Details taken from Console.
+        public void ContactDetailsTakenFromConsole()
         {
             User_Registration_Regex user_Registration_Regex = new User_Registration_Regex();
             Console.Write("Enter first name: ");
@@ -33,5 +36,6 @@ namespace UserRegistrationRegex
             password = Console.ReadLine();
             Console.WriteLine(user_Registration_Regex.ValidatePassword(password));
         }
+        #endregion
     }
 }

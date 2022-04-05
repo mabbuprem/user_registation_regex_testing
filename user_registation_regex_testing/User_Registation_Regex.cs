@@ -9,11 +9,15 @@ namespace UserRegistrationRegex
 {
     public class User_Registration_Regex
     {
+        #region Regex Patterns of All required Fields
         public static string firstName = "^[A-Z]{1}[a-zA-Z]{2,}$";
         public static string lastName = "^[A-Z]{1}[a-zA-Z]{2,}$";
         public static string eMailRegex = @"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$";
         public static string mobileNoFormat = @"^91[ ][5-9]{1}[0-9]{9}$";
         public static string passwordFormat = "^(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z1-9]{1}[a-zA-Z0-9]{7,}";
+        #endregion
+
+        #region Patterns Validation by Regex
         public string ValidatePassword(string password)
         {
             string result = Regex.IsMatch(password, passwordFormat) ? $"{password} is valid".ToUpper() : $"{password} is Invalid".ToUpper();
@@ -39,5 +43,6 @@ namespace UserRegistrationRegex
             string result = Regex.IsMatch(fN, firstName) ? $"{fN} is valid".ToUpper() : $"{fN} is Invalid".ToUpper();
             return result;
         }
+        #endregion
     }
 }
